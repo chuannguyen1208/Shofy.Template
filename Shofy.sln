@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E05C0383-DD3E-4F49-810C-92BB98283103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shofy.Web", "Shofy.Web\Shofy.Web.csproj", "{F3E226D7-FA2D-4F7B-950A-937351C04572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shofy.Entities", "Shofy.Entities\Shofy.Entities.csproj", "{AF4C7197-7FD4-46AF-9E3C-72FF19EC49F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shofy.UseCases", "Shofy.UseCases\Shofy.UseCases.csproj", "{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shofy.Infrastructure", "Shofy.Infrastructure\Shofy.Infrastructure.csproj", "{B6D7A687-47B3-4752-ACAC-758543D8923D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".templates", ".templates", "{0CA9661F-389E-4336-A8B0-407E72106397}"
+	ProjectSection(SolutionItems) = preProject
+		Shofy.nuspec = Shofy.nuspec
+		.template.config\template.json = .template.config\template.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF4C7197-7FD4-46AF-9E3C-72FF19EC49F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4C7197-7FD4-46AF-9E3C-72FF19EC49F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4C7197-7FD4-46AF-9E3C-72FF19EC49F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4C7197-7FD4-46AF-9E3C-72FF19EC49F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E226D7-FA2D-4F7B-950A-937351C04572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E226D7-FA2D-4F7B-950A-937351C04572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E226D7-FA2D-4F7B-950A-937351C04572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E226D7-FA2D-4F7B-950A-937351C04572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D7A687-47B3-4752-ACAC-758543D8923D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D7A687-47B3-4752-ACAC-758543D8923D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D7A687-47B3-4752-ACAC-758543D8923D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D7A687-47B3-4752-ACAC-758543D8923D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF4C7197-7FD4-46AF-9E3C-72FF19EC49F1} = {E05C0383-DD3E-4F49-810C-92BB98283103}
+		{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36} = {E05C0383-DD3E-4F49-810C-92BB98283103}
+		{F3E226D7-FA2D-4F7B-950A-937351C04572} = {E05C0383-DD3E-4F49-810C-92BB98283103}
+		{B6D7A687-47B3-4752-ACAC-758543D8923D} = {E05C0383-DD3E-4F49-810C-92BB98283103}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5387F46F-B029-44F0-AD5D-24D7BBCE4527}
+	EndGlobalSection
+EndGlobal
