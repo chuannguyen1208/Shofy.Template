@@ -1,6 +1,7 @@
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Shofy.Infrastructure;
+using Shofy.Infrastructure.MongoDb;
 using Shofy.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services
     .AddUseCases()
-    .AddInfrastructure();
+    //.AddInfrastructure()
+    .AddInfrastructureMongoDb(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
