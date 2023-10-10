@@ -13,8 +13,8 @@
       Update CICD workflow to request required permissions.
     </releaseNotes>
 
-    <projectUrl>https://github.com/chuannguyen1208/Shofy</projectUrl>
-    <repository type="git" url="https://github.com/chuannguyen1208/Shofy.git" branch="main" />
+    <projectUrl>https://github.com/chuannguyen1208/Shofy.Template</projectUrl>
+    <repository type="git" url="https://github.com/chuannguyen1208/Shofy.Template.git" branch="master" />
 
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -27,7 +27,7 @@
   </metadata>
 
   <files>
-    <file src=".\**" target="content" exclude="**\node_modules\**;**\bin\**;**\obj\**;.\.vs\**;.\.vscode\**;**\ClientApp\dist\**;**\wwwroot\dist\**;content\Directory.Build.*;.\.git\**;.\.github\workflows\package.yml;.\.github\workflows\codeql.yml;.\.github\ISSUE_TEMPLATE\**;.\.github\icon.png;.\CODE_OF_CONDUCT.md;.\LICENSE;.\README.md;" />
+    <file src=".\**" target="content" exclude="**/bin/**;**/obj/**;**/.vs/**;**/.vscode/**;**/wwwroot/dist/**;content/Directory.Build.*" />
   </files>
 
 </package>
