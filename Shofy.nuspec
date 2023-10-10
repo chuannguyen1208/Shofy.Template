@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>Shofy.ChuanNguyen.Solution.CSharp</id>
+    <id>Clean.Architecture.Cn.Template</id>
     <version>7.0.0</version>
     <title>Clean Architecture Solution Template</title>
     <authors>ChuanNguyen</authors>
@@ -19,6 +19,7 @@
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>clean-architecture project template csharp dotnet</tags>
+	<readme>README.md</readme>
 
     <packageTypes>
       <packageType name="Template" />
@@ -27,6 +28,7 @@
   </metadata>
 
   <files>
+	<file src="README.md" />
     <file src=".\**" target="content" exclude="**/bin/**;**/obj/**;**/.vs/**;**/.vscode/**;**/wwwroot/dist/**;content/Directory.Build.*" />
   </files>
 
