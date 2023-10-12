@@ -12,6 +12,8 @@ namespace Shofy.Infrastructure
             _forecasts = new List<WeatherForecast>();
         }
 
+        public IQueryable<WeatherForecast> WeatherForecasts => _forecasts.AsQueryable();
+
         public Task<WeatherForecast> CreateAsync(WeatherForecast weatherForecast)
         {
             weatherForecast.Id = Guid.NewGuid();

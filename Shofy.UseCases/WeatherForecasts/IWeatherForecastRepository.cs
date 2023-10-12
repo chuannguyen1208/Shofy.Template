@@ -9,6 +9,7 @@ namespace Shofy.UseCases.WeatherForecasts
 {
     public interface IWeatherForecastRepository
     {
+        IQueryable<WeatherForecast> WeatherForecasts { get; }
         Task<WeatherForecast> CreateAsync(WeatherForecast weatherForecast);
         Task<IEnumerable<WeatherForecast>> GetManyAsync();
     }

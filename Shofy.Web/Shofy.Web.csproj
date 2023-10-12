@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FilterSortPageBuilder\FilterSortPageBuilder.csproj" />
     <ProjectReference Include="..\Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj" />
     <ProjectReference Include="..\Shofy.Infrastructure\Shofy.Infrastructure.csproj" />
     <ProjectReference Include="..\Shofy.UseCases\Shofy.UseCases.csproj" />

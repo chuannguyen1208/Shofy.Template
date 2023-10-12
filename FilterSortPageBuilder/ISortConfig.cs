@@ -16,6 +16,7 @@ public interface ISortConfig<TItem, TKey>
     OrderByDateTimeOffset<TItem> OrderByDateTimeOffsetKeySelectors { get; }
     OrderByInt<TItem> OrderByIntKeySelectors { get; }
     OrderByDecimal<TItem> OrderByDecimalKeySelectors { get; }
+    OrderByDateOnly<TItem> OrderByDateOnlySelectors { get; }
     Expression<Func<TItem, TKey>> PrimaryKeySelector { get; }
 }
 
@@ -34,9 +35,10 @@ public static class IQueryableSortExtensions
         {
             return Queryable.OrderBy(items, config!.PrimaryKeySelector);
         }
-        return items
-            .SortBy<TItem, TConfig, TKey>(config)
-            .ThenBy(config.PrimaryKeySelector);
+
+        var res = items.SortBy<TItem, TConfig, TKey>(config);
+
+        return res;
     }
 
     private static IOrderedQueryable<TItem> SortBy<TItem, TConfig, TKey>(
@@ -44,48 +46,34 @@ public static class IQueryableSortExtensions
         TConfig config)
         where TConfig : ISortConfig<TItem, TKey>
     {
-        var results = items.OrderBy(e => false);
+        IOrderedQueryable<TItem>? results = null;
+
+        var orderHandler = config.OrderByStringKeySelectors;
+        orderHandler
+            .SetNext(config.OrderByIntKeySelectors)
+            .SetNext(config.OrderByDateTimeKeySelectors)
+            .SetNext(config.OrderByDateTimeOffsetKeySelectors)
+            .SetNext(config.OrderByDateOnlySelectors)
+            .SetNext(config.OrderByDecimalKeySelectors)
+            .SetNext(config.OrderByBoolKeySelectors);
+
         foreach (var sorting in config.SortCriteria)
         {
             var parts = sorting.Split('|');
+
             var orderBy = parts[0];
+
             var orderDesc = parts[1].ToLower() == "desc";
-            if (config.OrderByStringKeySelectors.TryGetValue(orderBy, out var orderByStringKeySelector))
-            {
-                results = orderDesc ? results.ThenByDescending(orderByStringKeySelector) : results.ThenBy(orderByStringKeySelector);
-                continue;
-            }
 
-            if (config.OrderByIntKeySelectors.TryGetValue(orderBy, out var orderByIntKeySelector))
-            {
-                results = orderDesc ? results.ThenByDescending(orderByIntKeySelector) : results.ThenBy(orderByIntKeySelector);
-                continue;
-            }
-
-            if (config.OrderByDateTimeKeySelectors.TryGetValue(orderBy, out var orderByDateTimeKeySelector))
-            {
-                results = orderDesc ? results.ThenByDescending(orderByDateTimeKeySelector) : results.ThenBy(orderByDateTimeKeySelector);
-                continue;
-            }
-
-            if (config.OrderByDateTimeOffsetKeySelectors.TryGetValue(orderBy, out var orderByStringDateTimeOffsetSelector))
-            {
-                results = orderDesc ? results.ThenByDescending(orderByStringDateTimeOffsetSelector) : results.ThenBy(orderByStringDateTimeOffsetSelector);
-                continue;
-            }
-
-            if (config.OrderByDecimalKeySelectors.TryGetValue(orderBy, out var orderByDecimalKeySelector))
-            {
-                results = orderDesc ? results.ThenByDescending(orderByDecimalKeySelector) : results.ThenBy(orderByDecimalKeySelector);
-                continue;
-            }
-
-            if (config.OrderByBoolKeySelectors.TryGetValue(orderBy, out var orderByBoolKeySelector))
-            {
-                results = orderDesc ? results.ThenByDescending(orderByBoolKeySelector) : results.ThenBy(orderByBoolKeySelector);
-                continue;
-            }
+            results = orderHandler.Order(
+                orderedItems: results,
+                orderBy: orderBy,
+                orderDesc: orderDesc,
+                originalItems: items);
         }
-        return results;
+
+        results = results != null ? results.ThenBy(config.PrimaryKeySelector) : items.OrderBy(config.PrimaryKeySelector);
+
+        return results!;
     }
 }

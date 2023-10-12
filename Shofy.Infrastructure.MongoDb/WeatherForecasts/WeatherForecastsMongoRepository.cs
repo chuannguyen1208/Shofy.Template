@@ -21,6 +21,8 @@ namespace Shofy.Infrastructure.MongoDb.WeatherFocasts
             _forecastsCollection = mongoDatabase.GetCollection<WeatherForecast>(databaseSettings.Value.WeathersCollectionName);
         }
 
+        public IQueryable<WeatherForecast> WeatherForecasts => _forecastsCollection.AsQueryable();
+
         public async Task<WeatherForecast> CreateAsync(WeatherForecast weatherForecast)
         {
             await _forecastsCollection.InsertOneAsync(weatherForecast);

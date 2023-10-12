@@ -14,6 +14,7 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
     private OrderByDateTimeOffset<TItem>? OrderByDateTimeOffsetKeySelectors;
     private OrderByInt<TItem>? OrderByIntKeySelectors;
     private OrderByDecimal<TItem>? OrderByDecimalKeySelectors;
+    private OrderByDateOnly<TItem>? OrderByDateOnlyKeySelectors;
 
     private readonly int? PageSize;
     private readonly int? PageNumber;
@@ -43,7 +44,8 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
         OrderByDateTime<TItem>? orderByDateTimeKeySelectors = null,
         OrderByDateTimeOffset<TItem>? orderByDateTimeOffsetKeySelectors = null,
         OrderByInt<TItem>? orderByIntKeySelectors = null,
-        OrderByDecimal<TItem>? orderByDecimalKeySelectors = null)
+        OrderByDecimal<TItem>? orderByDecimalKeySelectors = null,
+        OrderByDateOnly<TItem>? orderByDateOnlyKeySelectors = null)
     {
         SortCriteria = sortCriteria;
         OrderByBoolKeySelectors = orderByBoolKeySelectors;
@@ -52,6 +54,7 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
         OrderByDateTimeOffsetKeySelectors = orderByDateTimeOffsetKeySelectors;
         OrderByIntKeySelectors = orderByIntKeySelectors;
         OrderByDecimalKeySelectors = orderByDecimalKeySelectors;
+        OrderByDateOnlyKeySelectors = orderByDateOnlyKeySelectors;
         return this;
     }
 
@@ -66,6 +69,7 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
             orderByDateTimeOffsetKeySelectors: OrderByDateTimeOffsetKeySelectors ?? new OrderByDateTimeOffset<TItem>(),
             orderByIntKeySelectors: OrderByIntKeySelectors ?? new OrderByInt<TItem>(),
             orderByDecimalKeySelectors: OrderByDecimalKeySelectors ?? new OrderByDecimal<TItem>(),
+            orderByDateOnlyKeySelectors: OrderByDateOnlyKeySelectors ?? new OrderByDateOnly<TItem>(),
             pageSize: PageSize ?? int.MaxValue,
             pageNumber: PageNumber ?? 0);
 
@@ -73,7 +77,6 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
         IFilterSortPageConfig<TResultItem, TResultArgs, TResultKey>
     {
         public FilterPredicate<TResultItem, TResultArgs>[] FilterPredicates { get; private set; }
-
         public Expression<Func<TResultItem, TResultKey>> PrimaryKeySelector { get; private set; }
         public IEnumerable<string> SortCriteria { get; private set; }
         public OrderByBool<TResultItem> OrderByBoolKeySelectors { get; private set; }
@@ -82,6 +85,7 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
         public OrderByDateTimeOffset<TResultItem> OrderByDateTimeOffsetKeySelectors { get; private set; }
         public OrderByInt<TResultItem> OrderByIntKeySelectors { get; private set; }
         public OrderByDecimal<TResultItem> OrderByDecimalKeySelectors { get; private set; }
+        public OrderByDateOnly<TResultItem> OrderByDateOnlySelectors { get; private set; }
 
         public int PageSize { get; }
         public int PageNumber { get; }
@@ -96,6 +100,7 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
             OrderByDateTimeOffset<TResultItem> orderByDateTimeOffsetKeySelectors,
             OrderByInt<TResultItem> orderByIntKeySelectors,
             OrderByDecimal<TResultItem> orderByDecimalKeySelectors,
+            OrderByDateOnly<TResultItem> orderByDateOnlyKeySelectors,
             int pageSize,
             int pageNumber)
         {
@@ -108,6 +113,7 @@ public class FilterSortPageConfigBuilder<TItem, TArgs, TKey>
             OrderByDateTimeOffsetKeySelectors = orderByDateTimeOffsetKeySelectors;
             OrderByIntKeySelectors = orderByIntKeySelectors;
             OrderByDecimalKeySelectors = orderByDecimalKeySelectors;
+            OrderByDateOnlySelectors = orderByDateOnlyKeySelectors;
             PageSize = pageSize;
             PageNumber = pageNumber;
         }
