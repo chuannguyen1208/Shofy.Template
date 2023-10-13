@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Clean.Architecture.Cn.Template</id>
-    <version>7.0.0</version>
+    <version>7.0.1</version>
     <title>Clean Architecture Solution Template</title>
     <authors>ChuanNguyen</authors>
     <description>Clean Architecture Solution Template for .NET 7.</description>
