@@ -9,7 +9,16 @@ namespace Shofy.Infrastructure
 
         public WeatherForecastRepository()
         {
-            _forecasts = new List<WeatherForecast>();
+            _forecasts = new List<WeatherForecast>
+            {
+                new WeatherForecast
+                {
+                    Id = Guid.NewGuid(),
+                    Date = DateOnly.Parse("2023-01-01"),
+                    TemperatureC = 32,
+                    Summary = "Seed from default"
+                }
+            };
         }
 
         public IQueryable<WeatherForecast> WeatherForecasts => _forecasts.AsQueryable();

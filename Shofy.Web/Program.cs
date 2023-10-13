@@ -1,16 +1,30 @@
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using Shofy.Infrastructure;
-using Shofy.Infrastructure.MongoDb;
+
 using Shofy.UseCases;
 
+#if (UseEfcore)
+using Shofy.Infrastructure.EfCore;
+#elif (UseMongoDb)
+using Shofy.Infrastructure.MongoDb;
+#else
+using Shofy.Infrastructure;
+#endif
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("SqlConnection")!;
 
 // Add services to the container.
 builder.Services
     .AddUseCases()
-    //.AddInfrastructure()
+    #if (UseEfCore)
+    .AddInfrastructureEfCore(connectionString);
+    #elif (UseMongoDb)
     .AddInfrastructureMongoDb(builder.Configuration);
+    #else
+    .AddInfrastructure();
+    #endif
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

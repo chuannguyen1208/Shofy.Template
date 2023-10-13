@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Shofy.Entities;
 using Shofy.UseCases.WeatherForecasts;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Shofy.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddSingleton<IWeatherForecastRepository, WeatherForecastRepository>();
+            services.AddScoped<INoTrackingDbContext, DefaultAppDbContext>();
 
             return services;
         }
