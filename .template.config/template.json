@@ -41,7 +41,8 @@
         "**/*.filelist",
         "**/*.user",
         "**/*.lock.json",
-        "*.nuspec"
+        "*.nuspec",
+        ".git/**"
       ],
       "rename": {
       },

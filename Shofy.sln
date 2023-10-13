@@ -21,12 +21,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Infrastructure", "Shofy.Infrastructure\Shofy.Infrastructure.csproj", "{B6D7A687-47B3-4752-ACAC-758543D8923D}"
 EndProject
 #endif
+
+#if (false)
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".templates", ".templates", "{0CA9661F-389E-4336-A8B0-407E72106397}"
 	ProjectSection(SolutionItems) = preProject
 		Shofy.nuspec = Shofy.nuspec
 		.template.config\template.json = .template.config\template.json
 	EndProjectSection
 EndProject
+#endif
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterSortPageBuilder", "FilterSortPageBuilder\FilterSortPageBuilder.csproj", "{AE013394-3A40-4717-AD59-19D19BF1055E}"
 EndProject
 Global
