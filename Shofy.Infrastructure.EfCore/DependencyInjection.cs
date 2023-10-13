@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Shofy.Entities;
+using Shofy.UseCases.WeatherForecasts;
 
 namespace Shofy.Infrastructure.EfCore
 {
@@ -22,7 +23,7 @@ namespace Shofy.Infrastructure.EfCore
                 //    sqlServerOptionsAction: sqlServerOptionsAction);
                 .UseInMemoryDatabase(databaseName: "Shofy");
 
-            return services
+            services
                 //	Using dbContext which pooling, which reuses dbContext instance base on it's state
                 .AddDbContextPool<ApplicationDbContext>(
                     optionsAction: addSqlServerOptions,
@@ -35,6 +36,10 @@ namespace Shofy.Infrastructure.EfCore
                         .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution),
                     contextLifetime: ServiceLifetime.Scoped,
                     optionsLifetime: ServiceLifetime.Singleton);
+
+            services.AddScoped<IWeatherForecastRepository, WeatherForecastsRepository>();
+
+            return services;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Shofy.Infrastructure.EfCore
         {
         }
 
-        private DbSet<WeatherForecast> WeatherForecasts { get; set; }
+        public DbSet<WeatherForecast> WeatherForecasts { get; set; }
         IQueryable<WeatherForecast> INoTrackingDbContext.WeatherForecasts => WeatherForecasts;
     }
 }

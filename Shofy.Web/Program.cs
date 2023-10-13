@@ -1,9 +1,7 @@
 using NSwag;
 using NSwag.Generation.Processors.Security;
-
 using Shofy.UseCases;
-
-#if (UseEfcore)
+#if (UseEfCore)
 using Shofy.Infrastructure.EfCore;
 #elif (UseMongoDb)
 using Shofy.Infrastructure.MongoDb;
@@ -17,13 +15,13 @@ var connectionString = builder.Configuration.GetConnectionString("SqlConnection"
 // Add services to the container.
 builder.Services
     .AddUseCases()
-    #if (UseEfCore)
+#if (UseEfCore)
     .AddInfrastructureEfCore(connectionString);
-    #elif (UseMongoDb)
+#elif (UseMongoDb)
     .AddInfrastructureMongoDb(builder.Configuration);
-    #else
+#else
     .AddInfrastructure();
-    #endif
+#endif
 
 
 builder.Services.AddControllers();

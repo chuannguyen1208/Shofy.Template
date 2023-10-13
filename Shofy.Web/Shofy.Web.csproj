@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -14,12 +14,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FilterSortPageBuilder\FilterSortPageBuilder.csproj" />
-    <ProjectReference Include="..\Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj" Condition="'$(UseEfCore)' == 'True'" />
-    <ProjectReference Include="..\Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj" />
-    <ProjectReference Include="..\Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj" Condition="'$(UseMongoDb)' == 'True'" />
-    <ProjectReference Include="..\Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj" />
-    <ProjectReference Include="..\Shofy.Infrastructure\Shofy.Infrastructure.csproj" Condition="'$(UseEfCore)' == 'False' AND '$(UseMongoDb)' == 'False'" />
-    <ProjectReference Include="..\Shofy.Infrastructure\Shofy.Infrastructure.csproj" />
+    <!--#if (UseEfCore) -->
+    <ProjectReference Include="..\Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj"/>
+    <!--#elif (UseMongoDb)-->
+    <ProjectReference Include="..\Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj"/>
+    <!--#else-->
+    <ProjectReference Include="..\Shofy.Infrastructure\Shofy.Infrastructure.csproj"/>
+    <!--#endif-->
     <ProjectReference Include="..\Shofy.UseCases\Shofy.UseCases.csproj" />
   </ItemGroup>
 

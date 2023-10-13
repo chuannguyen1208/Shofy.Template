@@ -29,12 +29,6 @@
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Whether to use EfCore instead of Default."
-    },
-    "UseDefault": {
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "true",
-      "description": "Use default infras."
     }
   },
   "sources": [
@@ -67,7 +61,7 @@
           ]
         },
         {
-          "condition": "(UseDefault && !UseMongoDb && !UseEfCore)",
+          "condition": "(!UseMongoDb && !UseEfCore)",
           "exclude": [
             "Shofy.Infrastructure.EfCore/**",
             "Shofy.Infrastructure.MongoDb/**"

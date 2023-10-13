@@ -11,19 +11,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Entities", "Shofy.Ent
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.UseCases", "Shofy.UseCases\Shofy.UseCases.csproj", "{EE3E07E9-2AEE-40B3-BC61-BE81C7A3DE36}"
 EndProject
+#if (UseEfCore)
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Infrastructure.EfCore", "Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj", "{AA28EDD8-5919-46B1-843D-FA9841FDB9F4}"
+EndProject
+#elif (UseMongoDb)
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Infrastructure.MongoDb", "Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj", "{FEDC82FF-204C-4430-B9AA-7B917F5E0F7B}"
+EndProject
+#else
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Infrastructure", "Shofy.Infrastructure\Shofy.Infrastructure.csproj", "{B6D7A687-47B3-4752-ACAC-758543D8923D}"
 EndProject
+#endif
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".templates", ".templates", "{0CA9661F-389E-4336-A8B0-407E72106397}"
 	ProjectSection(SolutionItems) = preProject
 		Shofy.nuspec = Shofy.nuspec
 		.template.config\template.json = .template.config\template.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Infrastructure.MongoDb", "Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj", "{FEDC82FF-204C-4430-B9AA-7B917F5E0F7B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterSortPageBuilder", "FilterSortPageBuilder\FilterSortPageBuilder.csproj", "{AE013394-3A40-4717-AD59-19D19BF1055E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shofy.Infrastructure.EfCore", "Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj", "{AA28EDD8-5919-46B1-843D-FA9841FDB9F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

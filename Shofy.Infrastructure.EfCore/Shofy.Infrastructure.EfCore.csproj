@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shofy.Entities\Shofy.Entities.csproj" />
+    <ProjectReference Include="..\Shofy.UseCases\Shofy.UseCases.csproj" />
   </ItemGroup>
 
 </Project>
