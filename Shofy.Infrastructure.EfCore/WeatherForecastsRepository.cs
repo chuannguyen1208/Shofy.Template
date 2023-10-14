@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shofy.Infrastructure.EfCore
 {
-    public class WeatherForecastsRepository : IWeatherForecastRepository
+    internal class WeatherForecastsRepository : IWeatherForecastRepository
     {
         private readonly ApplicationDbContext _context;
 

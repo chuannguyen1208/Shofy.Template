@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Shofy.Infrastructure.MongoDb.WeatherFocasts
 {
-    public class WeatherForecastsMongoRepository : IWeatherForecastRepository
+    internal class WeatherForecastsMongoRepository : IWeatherForecastRepository
     {
         private readonly IMongoCollection<WeatherForecast> _forecastsCollection;
 

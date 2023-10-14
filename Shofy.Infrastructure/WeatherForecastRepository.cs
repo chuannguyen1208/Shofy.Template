@@ -3,7 +3,7 @@ using Shofy.UseCases.WeatherForecasts;
 
 namespace Shofy.Infrastructure
 {
-    public class WeatherForecastRepository : IWeatherForecastRepository
+    internal class WeatherForecastRepository : IWeatherForecastRepository
     {
         private readonly List<WeatherForecast> _forecasts;
 
