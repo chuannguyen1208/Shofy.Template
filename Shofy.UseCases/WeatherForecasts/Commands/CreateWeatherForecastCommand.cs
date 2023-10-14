@@ -9,33 +9,34 @@ using System.Threading.Tasks;
 
 namespace Shofy.UseCases.WeatherForecasts.Commands
 {
-    public record CreateWeatherForecastCommand(DateOnly Date, int TemperatureC, string? Summary) : IRequest<WeatherForecaseDTO>;
-
-    public record CreateWeaatherForecaseCommandHandler : IRequestHandler<CreateWeatherForecastCommand, WeatherForecaseDTO>
+    public record CreateWeatherForecastCommand(DateOnly Date, int TemperatureC, string? Summary) : IRequest<WeatherForecaseDTO>
     {
-        private readonly IWeatherForecastRepository _weatherForecastRepository;
-        private readonly IMapper _mapper;
-
-        public CreateWeaatherForecaseCommandHandler(
-            IWeatherForecastRepository weatherForecastRepository, 
-            IMapper mapper)
+        internal class CreateWeaatherForecaseCommandHandler : IRequestHandler<CreateWeatherForecastCommand, WeatherForecaseDTO>
         {
-            _weatherForecastRepository = weatherForecastRepository;
-            _mapper = mapper;
-        }
+            private readonly IWeatherForecastRepository _weatherForecastRepository;
+            private readonly IMapper _mapper;
 
-        public async Task<WeatherForecaseDTO> Handle(CreateWeatherForecastCommand request, CancellationToken cancellationToken)
-        {
-            WeatherForecast entity = await _weatherForecastRepository.CreateAsync(new WeatherForecast
+            public CreateWeaatherForecaseCommandHandler(
+                IWeatherForecastRepository weatherForecastRepository,
+                IMapper mapper)
             {
-                Date = request.Date,
-                TemperatureC = request.TemperatureC,
-                Summary = request.Summary
-            });
+                _weatherForecastRepository = weatherForecastRepository;
+                _mapper = mapper;
+            }
 
-            var result = _mapper.Map<WeatherForecaseDTO>(entity);
+            public async Task<WeatherForecaseDTO> Handle(CreateWeatherForecastCommand request, CancellationToken cancellationToken)
+            {
+                WeatherForecast entity = await _weatherForecastRepository.CreateAsync(new WeatherForecast
+                {
+                    Date = request.Date,
+                    TemperatureC = request.TemperatureC,
+                    Summary = request.Summary
+                });
 
-            return result;
+                var result = _mapper.Map<WeatherForecaseDTO>(entity);
+
+                return result;
+            }
         }
     }
 }

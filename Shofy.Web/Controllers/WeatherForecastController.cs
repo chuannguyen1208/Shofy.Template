@@ -29,10 +29,11 @@ namespace Shofy.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<WeatherForecaseDTO> Create([FromBody] CreateWeatherForecastCommand command)
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(WeatherForecaseDTO))]
+        public async Task<IActionResult> Create([FromBody] CreateWeatherForecastCommand command)
         {
             var res = await _mediator.Send(command);
-            return res;
+            return Ok(res);
         }
     }
 }

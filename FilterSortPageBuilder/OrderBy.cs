@@ -51,7 +51,7 @@ public abstract class OrderBy<TItem, TValue> : Dictionary<string, Expression<Fun
 
 internal class CaseInsensitiveEqualityComparer : IEqualityComparer<string>
 {
-    public bool Equals(string x, string y) => string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
+    public bool Equals(string? x, string? y) => string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
 
     public int GetHashCode(string obj) => obj.GetHashCode(StringComparison.OrdinalIgnoreCase);
 }

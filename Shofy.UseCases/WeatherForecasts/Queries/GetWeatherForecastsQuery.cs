@@ -8,26 +8,27 @@ using System.Threading.Tasks;
 
 namespace Shofy.UseCases.WeatherForecasts.Queries
 {
-    public record GetWeatherForecastsQuery : IRequest<IEnumerable<WeatherForecaseDTO>>;
-
-    public class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecastsQuery, IEnumerable<WeatherForecaseDTO>>
+    public record GetWeatherForecastsQuery : IRequest<IEnumerable<WeatherForecaseDTO>>
     {
-        private readonly IWeatherForecastRepository _weatherForecastRepository;
-        private readonly IMapper _mapper;
-
-        public GetWeatherForecastsQueryHandler(IWeatherForecastRepository weatherForecastRepository, IMapper mapper)
+        internal class GetWeatherForecastsQueryHandler : IRequestHandler<GetWeatherForecastsQuery, IEnumerable<WeatherForecaseDTO>>
         {
-            _weatherForecastRepository = weatherForecastRepository;
-            _mapper = mapper;
-        }
+            private readonly IWeatherForecastRepository _weatherForecastRepository;
+            private readonly IMapper _mapper;
 
-        public async Task<IEnumerable<WeatherForecaseDTO>> Handle(GetWeatherForecastsQuery request, CancellationToken cancellationToken)
-        {
-            var entities = await _weatherForecastRepository.GetManyAsync();
+            public GetWeatherForecastsQueryHandler(IWeatherForecastRepository weatherForecastRepository, IMapper mapper)
+            {
+                _weatherForecastRepository = weatherForecastRepository;
+                _mapper = mapper;
+            }
 
-            var result = _mapper.Map<IEnumerable<WeatherForecaseDTO>>(entities);
+            public async Task<IEnumerable<WeatherForecaseDTO>> Handle(GetWeatherForecastsQuery request, CancellationToken cancellationToken)
+            {
+                var entities = await _weatherForecastRepository.GetManyAsync();
 
-            return result;
+                var result = _mapper.Map<IEnumerable<WeatherForecaseDTO>>(entities);
+
+                return result;
+            }
         }
     }
 }
