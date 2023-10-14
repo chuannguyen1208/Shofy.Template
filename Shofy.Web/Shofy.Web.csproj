@@ -15,11 +15,11 @@
   <ItemGroup>
     <ProjectReference Include="..\FilterSortPageBuilder\FilterSortPageBuilder.csproj" />
     <!--#if (UseEfCore) -->
-    <ProjectReference Include="..\Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj"/>
+    <ProjectReference Include="..\Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj" />
     <!--#elif (UseMongoDb)-->
-    <ProjectReference Include="..\Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj"/>
+    <ProjectReference Include="..\Shofy.Infrastructure.MongoDb\Shofy.Infrastructure.MongoDb.csproj" />
     <!--#else-->
-    <ProjectReference Include="..\Shofy.Infrastructure\Shofy.Infrastructure.csproj"/>
+    <ProjectReference Include="..\Shofy.Infrastructure\Shofy.Infrastructure.csproj" />
     <!--#endif-->
     <ProjectReference Include="..\Shofy.UseCases\Shofy.UseCases.csproj" />
   </ItemGroup>

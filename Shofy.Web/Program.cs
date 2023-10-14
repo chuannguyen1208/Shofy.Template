@@ -1,6 +1,7 @@
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Shofy.UseCases;
+using Microsoft.Extensions.FileProviders;
 #if (UseEfCore)
 using Shofy.Infrastructure.EfCore;
 #elif (UseMongoDb)
@@ -54,6 +55,14 @@ if (!string.IsNullOrWhiteSpace(apiPathBase))
 if (app.Environment.IsDevelopment())
 {
 }
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+           Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
+    RequestPath = "/StaticFiles"
+});
+
 
 app.UseOpenApi(settings =>
 {
