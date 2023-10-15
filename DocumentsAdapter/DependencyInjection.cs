@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ImageMagick;
+using Microsoft.Extensions.DependencyInjection;
 using Shofy.UseCases.Documents;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ namespace DocumentsAdapter
     {
         public static IServiceCollection AddDocumentsAdapter(this IServiceCollection services)
         {
+            MagickNET.Initialize();
+
             services.AddSingleton<IDocumentAdapter, DocumentAdapter>();
             return services;
         }

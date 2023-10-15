@@ -14,6 +14,11 @@ namespace Shofy.Entities
         public string Path { get; set; } = null!;
         public DocumentStatus DocumentStatus { get; set; }
         public string? Error { get; set; }
+
+        public int GetRecommendedWidth()
+        {
+            return 300;
+        }
     }
 
     public enum DocumentStatus

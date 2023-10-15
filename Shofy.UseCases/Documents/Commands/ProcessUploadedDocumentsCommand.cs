@@ -34,7 +34,9 @@ namespace Shofy.UseCases.Documents.Commands
                     {
                         await _documentRepository.UpdateDocumentStatusAsync(document.Id, DocumentStatus.Processing);
 
-                        string resizedPath = await _documentAdapter.ResizeAsync(document.Path);
+                        string resizedPath = await _documentAdapter.ResizeAsync(
+                            documentPath: document.Path,
+                            width: document.GetRecommendedWidth());
 
                         document.Path = resizedPath;
                         document.DocumentStatus = DocumentStatus.Ready;

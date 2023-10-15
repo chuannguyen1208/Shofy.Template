@@ -9,6 +9,8 @@ namespace Shofy.UseCases.Documents
 {
     public interface IDocumentAdapter
     {
-        Task<string> ResizeAsync(string documentPath);
+        Task<string> ResizeAsync(
+            string documentPath, 
+            int width);
     }
 }
