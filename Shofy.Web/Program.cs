@@ -2,6 +2,8 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using Shofy.UseCases;
 using Microsoft.Extensions.FileProviders;
+using Shofy.Web;
+using DocumentsAdapter;
 #if (UseEfCore)
 using Shofy.Infrastructure.EfCore;
 #elif (UseMongoDb)
@@ -16,6 +18,7 @@ var connectionString = builder.Configuration.GetConnectionString("SqlConnection"
 // Add services to the container.
 builder.Services
     .AddUseCases()
+    .AddDocumentsAdapter()
 #if (UseEfCore)
     .AddInfrastructureEfCore(connectionString);
 #elif (UseMongoDb)
@@ -39,6 +42,8 @@ builder.Services.AddOpenApiDocument(document =>
 
     document.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
 });
+
+builder.Services.AddHostedService<TimedHostedService>();
 
 string apiPathBase = builder.Configuration["API_PATH_BASE"]!;
 

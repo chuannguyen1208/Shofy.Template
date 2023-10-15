@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DocumentsAdapter\DocumentsAdapter.csproj" />
     <ProjectReference Include="..\FilterSortPageBuilder\FilterSortPageBuilder.csproj" />
     <!--#if (UseEfCore) -->
     <ProjectReference Include="..\Shofy.Infrastructure.EfCore\Shofy.Infrastructure.EfCore.csproj" />
