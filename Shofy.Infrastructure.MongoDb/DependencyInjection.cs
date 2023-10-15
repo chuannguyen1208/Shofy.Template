@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shofy.Entities;
+using Shofy.Infrastructure.MongoDb.Documents;
 using Shofy.Infrastructure.MongoDb.WeatherFocasts;
+using Shofy.UseCases.Files;
 using Shofy.UseCases.WeatherForecasts;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,7 @@ namespace Shofy.Infrastructure.MongoDb
             services.Configure<DatabaseSettings>(configuration.GetSection("MongoDatabase"));
             services.AddSingleton<INoTrackingDbContext, MongoDbContext>();
             services.AddSingleton<IWeatherForecastRepository, WeatherForecastsMongoRepository>();
+            services.AddSingleton<IDocumentRepository, DocumentRepository>();
             return services;
         }
     }

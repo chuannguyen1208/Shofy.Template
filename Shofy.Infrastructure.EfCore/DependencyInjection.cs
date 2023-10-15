@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Shofy.Entities;
 using Shofy.UseCases.WeatherForecasts;
+using Shofy.UseCases.Files;
+using Shofy.Infrastructure.EfCore.Documents;
 
 namespace Shofy.Infrastructure.EfCore
 {
@@ -38,6 +40,7 @@ namespace Shofy.Infrastructure.EfCore
                     optionsLifetime: ServiceLifetime.Singleton);
 
             services.AddScoped<IWeatherForecastRepository, WeatherForecastsRepository>();
+            services.AddScoped<IDocumentRepository, DocumentRepository>();
 
             return services;
         }
